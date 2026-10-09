@@ -1,0 +1,14 @@
+name = "video-vesa"
+info = "Legacy fallback VESA display driver."
+version = "2026.01.01"
+freedriver = true
+priority = -1
+
+[[hardware]]
+class_ids = ["0300"]
+vendor_ids = ["*"]
+device_ids = ["*"]
+
+depends = ["xf86-video-vesa"]
+conflicts = []
+config_conflicts = []

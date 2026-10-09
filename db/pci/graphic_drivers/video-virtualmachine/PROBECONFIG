@@ -1,0 +1,14 @@
+name = "video-virtualmachine"
+info = "Display and integration drivers for VMware, VirtualBox, and QEMU/KVM virtual machines."
+version = "2026.01.01"
+freedriver = true
+priority = 10
+
+[[hardware]]
+class_ids = ["0300"]
+vendor_ids = ["15ad", "80ee", "1af4", "1b36"]
+device_ids = ["*"]
+
+depends = ["xf86-video-vmware", "xf86-video-qxl"]
+conflicts = []
+config_conflicts = []

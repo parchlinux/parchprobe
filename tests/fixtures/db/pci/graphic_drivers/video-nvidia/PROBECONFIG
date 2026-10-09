@@ -1,0 +1,10 @@
+name = "video-nvidia"
+info = "Proprietary NVIDIA graphics driver"
+version = "550.54.14"
+freedriver = false
+priority = 7
+
+[[hardware]]
+class_ids = ["0300", "0302"]
+vendor_ids = ["10de"]
+device_ids = ["1234"]

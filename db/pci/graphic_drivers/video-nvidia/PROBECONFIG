@@ -1,0 +1,24 @@
+name = "video-nvidia"
+info = "Official proprietary NVIDIA graphics driver for modern GeForce, RTX, Quadro, and Tesla GPUs."
+version = "2026.01.01"
+freedriver = false
+priority = 7
+
+[[hardware]]
+class_ids = ["0300", "0302"]
+vendor_ids = ["10de"]
+device_ids = ["*"]
+blacklist_device_ids = [
+    # Legacy architectures handled by legacy drivers or nouveau
+    "0020", "0028", "0029", "002a", "002b", "002c", "002d",
+    "0040", "0041", "0042", "0043", "0044", "0045", "0047", "0048",
+    "0090", "0091", "0092", "0093", "0094", "0095", "0098", "0099"
+]
+
+conflicts = ["nvidia-390xx-utils", "nvidia-470xx-utils", "xf86-video-nouveau"]
+depends = ["nvidia-utils", "nvidia-settings"]
+config_conflicts = ["video-linux*", "video*nvidia*"]
+kernel_depends = ["nvidia"]
+kernel_conflicts = ["nvidia-390xx", "nvidia-470xx"]
+
+hooks_dir = "hooks"

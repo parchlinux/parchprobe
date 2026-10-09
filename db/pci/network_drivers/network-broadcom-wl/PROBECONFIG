@@ -1,0 +1,21 @@
+name = "network-broadcom-wl"
+info = "Broadcom 802.11 Linux STA wireless driver."
+version = "2026.01.01"
+freedriver = false
+priority = 5
+
+[[hardware]]
+class_ids = ["0280"]
+vendor_ids = ["14e4"]
+device_ids = [
+    "4311", "4312", "4313", "4328", "4329", "432a", "432b",
+    "432c", "432d", "4353", "4357", "4358", "4359", "4365",
+    "43a0", "4727"
+]
+
+depends = []
+conflicts = []
+config_conflicts = []
+kernel_depends = ["broadcom-wl"]
+
+hooks_dir = "hooks"

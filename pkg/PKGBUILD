@@ -1,0 +1,43 @@
+# Maintainer: Parch Linux Developers <dev@parchlinux.com>
+pkgname=parchprobe
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Hardware detection and driver configuration tool for Parch GNU/Linux"
+arch=('x86_64')
+url="https://github.com/parchlinux/parchprobe"
+license=('AGPL-3.0-only')
+depends=('pacman' 'glibc' 'hwdata' 'bash')
+makedepends=('zig>=0.16.0')
+provides=('parchprobe')
+conflicts=()
+backup=('etc/parchprobe-x86_64.conf')
+
+build() {
+    cd "${srcdir}/${pkgname}" || cd ..
+    zig build -Doptimize=ReleaseSafe
+}
+
+check() {
+    cd "${srcdir}/${pkgname}" || cd ..
+    zig build test
+}
+
+package() {
+    cd "${srcdir}/${pkgname}" || cd ..
+
+    # Binary
+    install -Dm755 zig-out/bin/parchprobe "${pkgdir}/usr/bin/parchprobe"
+
+    # Driver database
+    install -d "${pkgdir}/usr/lib/parchprobe/db"
+    cp -r db/* "${pkgdir}/usr/lib/parchprobe/db/"
+
+    # State directory
+    install -d "${pkgdir}/var/lib/parchprobe"
+
+    # Man page
+    install -Dm644 man/parchprobe.1 "${pkgdir}/usr/share/man/man1/parchprobe.1"
+
+    # License
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

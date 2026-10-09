@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Post-install hook for network-r8168
+# Blacklist built-in r8169 kernel driver so external r8168 handles the device
+mkdir -p /etc/modprobe.d
+cat << 'EOF' > /etc/modprobe.d/parchprobe-r8169.conf
+# Managed by parchprobe - do not edit directly
+blacklist r8169
+EOF

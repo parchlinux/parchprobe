@@ -1,0 +1,102 @@
+.TH PARCHPROBE 1 "October 2026" "Parch GNU/Linux" "User Commands"
+.SH NAME
+parchprobe \- hardware driver detection and configuration tool for Parch GNU/Linux
+.SH SYNOPSIS
+.B parchprobe
+[\fIOPTIONS\fR] \fICOMMAND\fR [\fIARGS\fR...]
+.SH DESCRIPTION
+\fBparchprobe\fR is the native hardware driver management tool for Parch GNU/Linux.
+It enumerates hardware devices present on the system over PCI and USB buses via sysfs,
+matches them against a declarative database of hardware configurations, and performs
+safe, automated driver installation and removal transactions.
+.SH COMMANDS
+.TP
+.B list
+List driver configurations available for currently detected hardware on the system.
+This is the default command if none is specified.
+.TP
+.B list-all
+List all driver configurations available in the database regardless of connected hardware.
+.TP
+.B list-installed
+List all driver configurations currently installed on the system according to the state database.
+.TP
+.B list-hardware
+List all detected PCI and USB devices along with their vendor, device, and class IDs.
+.TP
+.BI install " <bus> <config...>"
+Install one or more driver configurations for the specified bus (\fBpci\fR or \fBusb\fR).
+Requires superuser privileges (root).
+.TP
+.BI remove " <bus> <config...>"
+Remove one or more installed driver configurations for the specified bus (\fBpci\fR or \fBusb\fR).
+Requires superuser privileges (root).
+.TP
+.BI install-custom " <bus> <path>"
+Install a custom driver configuration from the specified directory containing a \fBPROBECONFIG\fR file.
+Requires superuser privileges (root).
+.TP
+.BI auto " <bus> <free|nonfree> <classid>"
+Automatically select and install the highest priority driver configuration for devices
+matching the given device class (e.g. \fB0300\fR for graphics).
+Requires superuser privileges (root).
+.SH OPTIONS
+.TP
+.B \-\-pci
+Limit queries and operations to the PCI bus.
+.TP
+.B \-\-usb
+Limit queries and operations to the USB bus.
+.TP
+.B \-\-detail
+Display verbose information for devices and configurations.
+.TP
+.B \-\-force
+Force reinstallation of an already installed configuration.
+.TP
+.B \-\-json
+Emit machine-readable JSON output on standard output.
+.TP
+.BI \-\-pmroot " <path>"
+Specify the root directory for package manager operations.
+.TP
+.BI \-\-pmconfig " <path>"
+Specify an alternative configuration file for the package manager.
+.TP
+.BI \-\-pmcachedir " <path>"
+Specify an alternative package cache directory.
+.TP
+.BR \-h ", " \-\-help
+Display usage summary and exit.
+.TP
+.BR \-v ", " \-\-version
+Display program version and license information.
+.SH FILES
+.TP
+.I /usr/lib/parchprobe/db/
+System driver database directory containing hardware definitions and hooks.
+.TP
+.I /var/lib/parchprobe/state.toml
+Record of currently installed hardware driver configurations.
+.TP
+.I /etc/parchprobe-x86_64.conf
+System configuration overrides, such as disabling multilib (lib32) driver packages.
+.SH ENVIRONMENT
+.TP
+.B PARCHPROBE_DB
+Override the directory path for the driver database.
+.TP
+.B PARCHPROBE_STATE
+Override the path to the installed state file.
+.TP
+.B PARCHPROBE_SYSFS
+Override the root sysfs path (useful for testing or chroot environments).
+.SH AUTHORS
+Written by the Parch GNU/Linux Developers.
+.SH COPYRIGHT
+Copyright \(co 2026 Parch Linux Developers.
+.br
+License AGPLv3+: GNU AGPL version 3 or later <https://gnu.org/licenses/agpl.html>.
+.br
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.

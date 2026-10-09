@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Post-install hook for video-nvidia
+# Blacklist open-source nouveau module to avoid conflicts with nvidia proprietary driver
+mkdir -p /etc/modprobe.d
+cat << 'EOF' > /etc/modprobe.d/parchprobe-nouveau.conf
+# Managed by parchprobe - do not edit directly
+blacklist nouveau
+options nouveau modeset=0
+EOF
+
+# Enable kernel modesetting for nvidia-drm
+cat << 'EOF' > /etc/modprobe.d/parchprobe-nvidia.conf
+# Managed by parchprobe - do not edit directly
+options nvidia-drm modeset=1
+EOF

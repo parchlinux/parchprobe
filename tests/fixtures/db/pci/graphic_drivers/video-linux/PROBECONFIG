@@ -1,0 +1,10 @@
+name = "video-linux"
+info = "Open source driver for various graphics cards"
+version = "2026.01.01"
+freedriver = true
+priority = 1
+
+[[hardware]]
+class_ids = ["0300", "0302"]
+vendor_ids = ["*"]
+device_ids = ["*"]

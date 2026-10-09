@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Post-remove hook for network-broadcom-wl
+rm -f /etc/modprobe.d/parchprobe-broadcom.conf

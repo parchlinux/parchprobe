@@ -1,0 +1,10 @@
+name = "r8168"
+info = "Realtek 8168 network driver"
+version = "8.052.01"
+freedriver = true
+priority = 5
+
+[[hardware]]
+class_ids = ["0200"]
+vendor_ids = ["10ec"]
+device_ids = ["8168"]

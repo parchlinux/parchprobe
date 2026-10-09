@@ -1,0 +1,19 @@
+.{
+    .name = .parchprobe,
+    .version = "0.1.0",
+    .fingerprint = 0xff2bad9c76a348a0,
+    .minimum_zig_version = "0.16.0",
+    .dependencies = .{},
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "db",
+        "docs",
+        "hooks",
+        "man",
+        "pkg",
+        "LICENSE",
+        "README.md",
+    },
+}

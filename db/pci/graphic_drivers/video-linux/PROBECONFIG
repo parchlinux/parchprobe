@@ -1,0 +1,16 @@
+name = "video-linux"
+info = "Standard open-source graphics drivers for AMD, Intel, NVIDIA (nouveau), and generic display controllers."
+version = "2026.01.01"
+freedriver = true
+priority = 1
+
+[[hardware]]
+class_ids = ["0300", "0302", "0380"]
+vendor_ids = ["1002", "8086", "10de", "1af4", "1013", "1234", "15ad", "1b36"]
+device_ids = ["*"]
+
+conflicts = ["nvidia", "nvidia-utils", "nvidia-dkms"]
+depends = ["mesa", "xf86-video-amdgpu", "xf86-video-ati", "xf86-video-intel", "xf86-video-nouveau"]
+config_conflicts = ["video-nvidia*"]
+
+hooks_dir = "hooks"

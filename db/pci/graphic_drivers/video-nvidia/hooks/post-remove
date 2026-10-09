@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Post-remove hook for video-nvidia
+# Clean up parchprobe-generated modprobe configurations
+rm -f /etc/modprobe.d/parchprobe-nouveau.conf
+rm -f /etc/modprobe.d/parchprobe-nvidia.conf

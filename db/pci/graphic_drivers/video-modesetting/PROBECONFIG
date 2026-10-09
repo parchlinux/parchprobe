@@ -1,0 +1,14 @@
+name = "video-modesetting"
+info = "Generic KMS modesetting video driver."
+version = "2026.01.01"
+freedriver = true
+priority = 0
+
+[[hardware]]
+class_ids = ["0300", "0302", "0380"]
+vendor_ids = ["*"]
+device_ids = ["*"]
+
+depends = ["mesa"]
+conflicts = []
+config_conflicts = []

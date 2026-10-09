@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Post-remove hook for network-r8168
+rm -f /etc/modprobe.d/parchprobe-r8169.conf

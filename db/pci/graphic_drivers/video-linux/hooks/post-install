@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Post-install hook for video-linux
+# Ensure open-source driver stack is unblocked and clean up any proprietary blacklists
+if [ -f "/etc/modprobe.d/parchprobe-nouveau.conf" ]; then
+    rm -f "/etc/modprobe.d/parchprobe-nouveau.conf"
+fi
+
+if [ -f "/etc/modprobe.d/parchprobe-nvidia.conf" ]; then
+    rm -f "/etc/modprobe.d/parchprobe-nvidia.conf"
+fi

@@ -1,0 +1,17 @@
+name = "network-r8168"
+info = "Realtek RTL8168/8111/8169 Gigabit Ethernet network driver."
+version = "2026.01.01"
+freedriver = true
+priority = 5
+
+[[hardware]]
+class_ids = ["0200"]
+vendor_ids = ["10ec"]
+device_ids = ["8168", "8161", "8167", "8169", "2502", "2600"]
+
+depends = []
+conflicts = []
+config_conflicts = []
+kernel_depends = ["r8168"]
+
+hooks_dir = "hooks"

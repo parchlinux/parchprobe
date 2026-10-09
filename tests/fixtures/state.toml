@@ -1,0 +1,9 @@
+[[installed]]
+name = "video-linux"
+bus = "pci"
+source = "tests/fixtures/db/pci/graphic_drivers/video-linux"
+hooks_dir = ""
+depends = ["xf86-video-amdgpu"]
+conflicts = []
+kernel_depends = []
+kernel_conflicts = []

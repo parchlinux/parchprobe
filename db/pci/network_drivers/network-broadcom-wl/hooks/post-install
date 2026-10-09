@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Post-install hook for network-broadcom-wl
+# Blacklist conflicting open-source Broadcom wireless drivers
+mkdir -p /etc/modprobe.d
+cat << 'EOF' > /etc/modprobe.d/parchprobe-broadcom.conf
+# Managed by parchprobe - do not edit directly
+blacklist b43
+blacklist b43legacy
+blacklist bcma
+blacklist brcmfmac
+blacklist brcmsmac
+blacklist ssb
+EOF

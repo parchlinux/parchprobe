@@ -1,0 +1,5 @@
+name = "test-ids"
+[[hardware]]
+class_ids = ["0300"]
+vendor_ids = ["8086"]
+device_ids_file = "devices.ids"
